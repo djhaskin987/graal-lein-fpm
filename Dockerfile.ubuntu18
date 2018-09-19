@@ -1,0 +1,21 @@
+FROM ubuntu:18.04
+
+RUN apt-get update && apt-get install -y \
+    automake \
+    build-essential \
+    curl \
+    ruby \
+    ruby-dev \
+ && rm -rf /var/lib/apt/lists/*
+RUN gem install fpm
+RUN curl -fSsL -O https://github.com/oracle/graal/releases/download/vm-1.0.0-rc6/graalvm-ce-1.0.0-rc6-linux-amd64.tar.gz && \
+    tar xf graalvm-ce-1.0.0-rc6-linux-amd64.tar.gz && \
+    mkdir -p /opt/graalvm && \
+    mv graalvm-ce-1.0.0-rc6 /opt/graalvm && \
+    rm -rf graalvm-ce-1.0.0-rc6-linux-amd64.tar.gz && \
+    ln -s /opt/graalvm/graalvm-ce-1.0.0-rc6 /opt/graalvm/current && \
+    ln -s /opt/graalvm/graalvm-ce-1.0.0-rc6/bin/java /usr/bin/java && \
+    ln -s /opt/graalvm/graalvm-ce-1.0.0-rc6/bin/javac /usr/bin/javac
+RUN curl -fSsL -O https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && \
+    mv lein /usr/bin && \
+    chmod a+x /usr/bin/lein
