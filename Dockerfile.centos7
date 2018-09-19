@@ -2,7 +2,7 @@ FROM centos:7
 
 RUN yum install -y \
     ruby ruby-devel rpm-devel rpm-build \
-    gcc g++ make patch git && \
+    gcc g++ make patch git zlib-devel glibc-devel && \
     yum clean all && rm -rf /var/cache/yum
 
 RUN gem install fpm
