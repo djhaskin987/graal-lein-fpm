@@ -13,6 +13,7 @@ RUN curl -fSsL -O https://github.com/oracle/graal/releases/download/vm-1.0.0-rc6
     rm -rf graalvm-ce-1.0.0-rc6-linux-amd64.tar.gz && \
     ln -s /opt/graalvm/graalvm-ce-1.0.0-rc6 /opt/graalvm/current && \
     ln -s /opt/graalvm/graalvm-ce-1.0.0-rc6/bin/java /usr/bin/java && \
+    ln -s /opt/graalvm/graalvm-ce-1.0.0-rc6/bin/native-image /usr/bin/native-image && \
     ln -s /opt/graalvm/graalvm-ce-1.0.0-rc6/bin/javac /usr/bin/javac
 RUN curl -fSsL -O https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && \
     mv lein /usr/bin && \
