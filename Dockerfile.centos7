@@ -1,6 +1,11 @@
 FROM centos:7
 
+RUN yum install -y epel-release && \
+    yum clean all && rm -rf /var/cache/yum
+
 RUN yum install -y \
+    jq \
+    time \
     ruby ruby-devel rpm-devel rpm-build \
     gcc g++ make patch git zlib-devel glibc-devel && \
     yum clean all && rm -rf /var/cache/yum
